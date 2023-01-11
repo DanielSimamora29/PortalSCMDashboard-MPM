@@ -10,43 +10,29 @@
     <div class="card-header">
         <div class="card-title">Ubah Password</div>
     </div>
-    <form class="mt-3" action="{{ route('EditProfile') }}" method="post" enctype="multipart/form-data">
+    <form class="mt-3" action="{{ route('EditSettingAdmin') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
-            <div class="form-group col-12 col-md-12 mt-3 {{ session()->has('old_password') ? 'has-danger' : '' }} {{ $errors->has('old_password') ? 'has-danger' : '' }}">
+            <div class="form-group col-12 col-md-12 mt-3">
                 <label for="passwordlama">Password Lama</label>
-                <input type="Password" class="form-control" name="old_password" id="old_password" placeholder="Masukkan Password Lama" {{ session()->has('old_password') ? 'form-control-danger' : '' }} {{ $errors->has('old_password') ? 'form-control-danger' : '' }} value="">
-            @if (session()->has('old_password'))
-            <div class="col-form-label">
-                {{ session('old_password') }}
+                <input type="Password" class="form-control" name="password_lama" id="password_lama" placeholder="Masukkan Password Lama">
+                @error('password_lama')
+                    <div class="text-red-500 mt-2 text-sm" style="color: red">{{ $message }}</div>
+                @enderror
             </div>
-            @endif
-            @if ($errors->has('old_password'))
-                <div class="col-form-label">
-                    {{ $errors->first('old_password') }}
-                </div>
-            @endif                
-            </div>
-            <div class="form-group col-12 col-md-6 mt-3 {{ $errors->has('password') ? 'has-danger' : '' }}" >
+            <div class="form-group col-12 col-md-6 mt-3" >
                 <label for="username">Password Baru</label>
-                <input type="Password" class="form-control" name="password" id="password" placeholder="Masukkan Password Baru"  {{ $errors->has('password') ? 'form-control-danger' : '' }} value="">
-                @if ($errors->has('password'))
-                <div class="col-form-label">
-                    @foreach ($errors->all() as $error)
-                        {{ $error }} <br>
-                    @endforeach
-                    Password format : Minimum 12 characters, at least one uppercase letter, one lowercase letter, one number, one special character
-                </div>
-            @endif
+                <input type="Password" class="form-control" name="password" id="password" placeholder="Masukkan Password Baru" value="">
+                @error('password')
+                    <div class="text-red-500 mt-2 text-sm" style="color: red">{{ $message }}</div>
+                @enderror
             </div>
-            <div class="form-group col-12 col-md-6 mt-3 {{ $errors->has('password_confirmation') ? 'has-danger' : '' }}">
+            <div class="form-group col-12 col-md-6 mt-3">
                 <label for="username">Konfirmasi Password Baru</label>
-                <input type="Password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Konfirmasi Password baru" {{ $errors->has('password_confirmation') ? 'form-control-danger' : '' }} value="">
-                @if ($errors->has('password_confirmation'))
-                <div class="col-form-label">
-                    {{ $errors->first('password_confirmation') }}
-                </div>
-            @endif
+                <input type="Password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Konfirmasi Password baru" value="">
+                @error('password_confirmation')
+                    <div class="text-red-500 mt-2 text-sm" style="color: red">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-12 col-md-6 mt-5">
                 <button type="submit" class="btn btn-success">Simpan</button>

@@ -16,6 +16,12 @@
 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/r-2.2.2/sc-2.0.0/datatables.min.js"></script>
 
 	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+	<script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " ></script> 
+
+	<script src="https://code.jquery.com/jquery-3.6.3.slim.js" integrity="sha256-DKU1CmJ8kBuEwumaLuh9Tl/6ZB6jzGOBV/5YpNE2BWc=" crossorigin="anonymous"></script>
+
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 	<script>
 		WebFont.load({
 			google: {"families":["Lato:300,400,700,900"]},
@@ -115,6 +121,25 @@
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/setting-demo.js"></script>
+
+	<script>
+        $(".logout").click(function(e) {
+            id = e.target.dataset.id
+            Swal.fire({
+                text: "Are you sure you want to log out from this system?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, log out!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.preventDefault();
+                    document.getElementById('logout-form').submit();
+                }
+            })
+        })
+    </script>
 
 	<script>
         $(document).ready(function() {

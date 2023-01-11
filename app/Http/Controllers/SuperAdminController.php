@@ -54,18 +54,7 @@ class SuperAdminController extends Controller
     }
 
     function TambahUserAdminProcess(Request $request){
-        $profile = "../assets/profile/default.png";
-        if ($request->hasFile("profile")) {
-            $file = $request->file("profile");
-            $extension = $file->getClientOriginalExtension();
-            $str = rand();
-            $result = md5($str);
-            $name = time() . "-" . $result . '.' . $extension;
-
-            $file->move(public_path() . '/profile/user/', $name);
-
-            $profile = '/profile/user/' . $name;
-        }
+        // $profile = "../assets/profile/default.png";
         DB::table('users')->insert(
             array(
                     'name'     =>   $request->name,
@@ -74,11 +63,11 @@ class SuperAdminController extends Controller
                     'role_id'     =>   $request->role_id,
                     'plants_id'     =>   $request->plants_id,
                     'dashboard_link'     =>   $request->dashboard_link,
-                    'profile'     =>   $profile,
                    'created_at'=>date("Y-m-d H:i:s"),
                    'updated_at'=>date("Y-m-d H:i:s")
             ));
-            return redirect()->back()->with('success', 'Berhasil menambahkan User Admin');
+
+            return redirect()->route('DaftarUserAdmin')->with('success', 'Berhasil menambahkan User Admin');
     }
 
     function TambahUserPegawai(Request $request){
@@ -92,18 +81,7 @@ class SuperAdminController extends Controller
     }
 
     function TambahUserPegawaiProcess(Request $request){
-        $profile = "../assets/profile/default.png";
-        if ($request->hasFile("profile")) {
-            $file = $request->file("profile");
-            $extension = $file->getClientOriginalExtension();
-            $str = rand();
-            $result = md5($str);
-            $name = time() . "-" . $result . '.' . $extension;
-
-            $file->move(public_path() . '/profile/user/', $name);
-
-            $profile = '/profile/user/' . $name;
-        }
+        // $profile = "../assets/profile/default.png";
         DB::table('users')->insert(
             array(
                     'name'     =>   $request->name,
@@ -112,11 +90,10 @@ class SuperAdminController extends Controller
                     'role_id'     =>   $request->role_id,
                     'plants_id'     =>   $request->plants_id,
                     'dashboard_link'     =>   $request->dashboard_link,
-                    'profile'     =>   $profile,
                    'created_at'=>date("Y-m-d H:i:s"),
                    'updated_at'=>date("Y-m-d H:i:s")
             ));
-            return redirect()->back()->with('success', 'Berhasil menambahkan User Pegawai');
+            return redirect()->route('DaftarUserPegawai')->with('success', 'Berhasil menambahkan User Pegawai');
     }
 
     function LihatDaftarUserAdmin(Request $request, $id){
@@ -148,7 +125,7 @@ class SuperAdminController extends Controller
             'dashboard_link' => $request->dashboard_link
         ]);
         if($updated) {
-            return redirect('/DaftarUserAdmin')->with('success', 'Data User Admin Berhasil Diubah');
+            return redirect()->back()->with('success', 'Data User Admin Berhasil Diubah');
         }
         return redirect()->back()->with('fail', 'Gagal');
     }
@@ -183,7 +160,7 @@ class SuperAdminController extends Controller
         ]);
 
         if($updated) {
-            return redirect('/DaftarUserPegawai')->with('success', 'Data User Pegawai Berhasil Diubah');
+            return redirect()->back()->with('success', 'Data User Pegawai Berhasil Diubah');
         }
 
         return redirect()->back()->with('fail', 'Gagal');

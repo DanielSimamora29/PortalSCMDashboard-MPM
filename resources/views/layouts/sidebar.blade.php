@@ -4,7 +4,12 @@
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <img src="../assets/profile/default.png" alt="..." class="avatar-img rounded-circle">
+                    @if ( auth()->user()->profile == NULL)
+                    <img src="{{ asset('../assets/profile/default.png') }}"  alt="..." class="avatar-img rounded-circle">
+                    @else
+                    <img src="{{ asset('profile/user/'. auth()->user()->profile) }}" alt="..." class="avatar-img rounded-circle">
+                    @endif
+                    {{-- <img src="{{ asset('profile/user/'. auth()->user()->profile) }}" alt="..." class="avatar-img rounded-circle"> --}}
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -61,7 +66,7 @@
                     </div> --}}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+                    <a class="nav-link" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt logout"></i><span>Logout</span></a>
                     {{-- <div class="collapse" id="dashboard">
                     </div> --}}
                 </li>
@@ -79,7 +84,7 @@
                     </div> --}}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+                    <a class="nav-link" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt logout"></i><span>Logout</span></a>
                     {{-- <div class="collapse" id="dashboard">
                     </div> --}}
                 </li>

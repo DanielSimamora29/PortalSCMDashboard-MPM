@@ -4,6 +4,15 @@
 
 @section('page_name', 'Edit User Pegawai')
 
+@if (session()->has('success'))
+                <script>
+                    Swal.fire(
+                        'success',
+                        '{{ session('success') }}'
+                    )
+                    </script>
+            @endif
+
 <div class="col-12 p-3 bg-white shadow rounded">
     <div class="card-header">
         <div class="card-title">Edit</div>

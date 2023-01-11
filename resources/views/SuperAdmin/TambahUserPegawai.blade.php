@@ -4,11 +4,20 @@
 
 @section('page_name', 'Tambah User Pegawai')
 
+@if (session()->has('success'))
+                <script>
+                    Swal.fire(
+                        'success',
+                        '{{ session('success') }}'
+                    )
+                    </script>
+            @endif
+
 <div class="col-12 p-3 bg-white shadow rounded">
     <div class="card-header">
         <div class="card-title">Form Tambah User Pegawai</div>
     </div>
-    <form class="mt-3" action="" method="post" enctype="multipart/form-data">
+    <form class="mt-3" action="{{ route('TambahUserPegawai.submit') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="form-group col-12 col-md-6 mt-3">
@@ -45,11 +54,6 @@
                 {{-- <input type="url" class="form-control" name="dashboard_link" placeholder="Masukkan Link Dashboard" value=""> --}}
                 <span class="invalid-feedback font-weight-bold"></span>
             </div>    
-            <div class="form-group mt-3 col-6">
-                <label for="profile">Gambar Profile <strong style=" font-size: 10px;">*upload GambarProfile .png/jpg max = 5MB</strong></label>
-                <input type="file" class="form-control" name="profile" placeholder="" value="">
-                <span class="invalid-feedback font-weight-bold"></span>
-            </div>
             <div class="col-12 col-md-6 mt-5">
                 <button type="submit" class="btn btn-success">Simpan</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>

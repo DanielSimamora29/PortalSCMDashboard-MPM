@@ -4,6 +4,15 @@
 
 @section('page_name', 'Tambah User Admin')
 
+@if (session()->has('success'))
+                <script>
+                    Swal.fire(
+                        'success',
+                        '{{ session('success') }}'
+                    )
+                    </script>
+            @endif
+
 <div class="col-12 p-3 bg-white shadow rounded">
     <div class="card-header">
         <div class="card-title">Form Tambah User Admin</div>
@@ -45,13 +54,8 @@
                 {{-- <input type="url" class="form-control" name="dashboard_link" placeholder="Masukkan Link Dashboard" value=""> --}}
                 <span class="invalid-feedback font-weight-bold"></span>
             </div>  
-            <div class="form-group mt-3 col-6">
-                <label for="profile">Gambar Profile <strong style=" font-size: 10px;">*upload GambarProfile .png/jpg max = 5MB</strong></label>
-                <input type="file" class="form-control" name="profile" placeholder="" value="">
-                <span class="invalid-feedback font-weight-bold"></span>
-            </div>
             <div class="col-12 col-md-6 mt-5">
-                <button type="submit" class="btn btn-success">Simpan</button>
+                <button type="submit" class="btn btn-success simpan">Simpan</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>
                 <a href="{{route('DaftarUserAdmin')}}" class="btn btn-primary"><span>Kembali</span></a>
             </div>
@@ -61,5 +65,5 @@
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-    @include('sweetalert::alert')s
+    @include('sweetalert::alert')
 @endsection

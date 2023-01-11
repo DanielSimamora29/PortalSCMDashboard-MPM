@@ -36,9 +36,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2,3']], function () {
 
 Route::group(['middleware' => ['auth', 'ceklevel:1']], function() {
     Route::get('/ProfileSuperAdmin', [AuthController::class, 'profileSuperAdmin'])->name('ProfileSuperAdmin');
-    Route::post('/EditProfileAdmin', [AuthController::class, 'EditProfile'])->name('EditProfile');
+    Route::post('/EditProfileSuperAdmin', [AuthController::class, 'editprofile'])->name('EditProfileSuperAdmin');
     Route::get('/SettingSuperAdmin', [AuthController::class, 'settingSuperAdmin'])->name('SettingSuperAdmin');
-    Route::post('/EditSettingSuperAdmin', [AuthController::class, 'EditProfile'])->name('EditProfile');
+    Route::post('/SettingSuperAdmin', [AuthController::class, 'editpassword'])->name('EditSettingSuperAdmin');
     Route::get('/DaftarUserAdmin', [SuperAdminController::class, 'DaftarUserAdmin'])->name('DaftarUserAdmin');
     Route::get('/DaftarUserAdmin', [SuperAdminController::class, 'tampilDaftarUserAdmin'])->name('DaftarUserAdmin');
     Route::get('/DaftarUserPegawai', [SuperAdminController::class, 'DaftarUserPegawai'])->name('DaftarUserPegawai');
@@ -58,18 +58,18 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function() {
 
 Route::group(['middleware' => ['auth', 'ceklevel:2']], function() {
     Route::get('/ProfileAdmin', [AuthController::class, 'profileAdmin'])->name('ProfileAdmin');
-    // Route::post('/EditProfileAdmin', [AuthController::class, 'EditProfile'])->name('EditProfile');
+    Route::post('/EditProfileAdmin', [AuthController::class, 'editprofile'])->name('EditProfileAdmin');
     Route::get('/SettingAdmin', [AuthController::class, 'settingAdmin'])->name('SettingAdmin');
-    // Route::post('/EditSettingAdmin', [AuthController::class, 'EditProfile'])->name('EditProfile');
+    Route::post('/SettingAdmin', [AuthController::class, 'editpassword'])->name('EditSettingAdmin');
 
 });
 
 
 Route::group(['middleware' => ['auth', 'ceklevel:3']], function() {
     Route::get('/ProfilePegawai', [AuthController::class, 'profilePegawai'])->name('ProfilePegawai');
-    // Route::post('/EditProfilePegawai', [AuthController::class, 'EditProfile'])->name('EditProfile');
+    Route::post('/EditProfilePegawai', [AuthController::class, 'editprofile'])->name('EditProfilePegawai');
     Route::get('/SettingPegawai', [AuthController::class, 'settingPegawai'])->name('SettingPegawai');
-    // Route::post('/EditSettingPegawai', [AuthController::class, 'EditProfile'])->name('EditProfile');
+    Route::post('/SettingPegawai', [AuthController::class, 'editpassword'])->name('EditSettingPegawai');
 
 });
 

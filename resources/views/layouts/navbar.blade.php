@@ -27,7 +27,13 @@
                 <li class="nav-item dropdown hidden-caret">
                     <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                         <div class="avatar-sm">
-                            <img src="../assets/profile/default.png" alt="..." class="avatar-img rounded-circle">
+                            @if ( auth()->user()->profile == NULL)
+                                <img src="{{ asset('../assets/profile/default.png') }}"  alt="..." class="avatar-img rounded-circle">
+                            @else
+                            <img src="{{ asset('profile/user/'. auth()->user()->profile) }}" alt="..." class="avatar-img rounded-circle">
+                            @endif
+                            {{-- <img src="{{ asset('profile/user/'. auth()->user()->profile) }}" height="245" width="245" class="rounded-circle profile-widget-picture" alt=""> --}}
+                            {{-- <img src="{{ asset('profile/user/'. auth()->user()->profile) }}" alt="..." class="avatar-img rounded-circle"> --}}
                         </div>
                     </a>
                 @if (Auth::user()->role_id == "1")   
@@ -35,7 +41,12 @@
                         <div class="dropdown-user-scroll scrollbar-outer">
                             <li>
                                 <div class="user-box">
-                                    <div class="avatar-lg"><img src="../assets/profile/default.png" alt="image profile" class="avatar-img rounded"></div>
+                                    @if ( auth()->user()->profile == NULL)
+                                    <div class="avatar-lg"><img src="{{ asset('../assets/profile/default.png') }}"  alt="image profile" class="avatar-img rounded"></div>
+                                    @else
+                                    <div class="avatar-lg"><img src="{{ asset('profile/user/'. auth()->user()->profile) }}" alt="image profile" class="avatar-img rounded"></div>
+                                    @endif
+                                    {{-- <div class="avatar-lg"><img src="{{ asset('profile/user/'. auth()->user()->profile) }}" alt="image profile" class="avatar-img rounded"></div> --}}
                                     <div class="u-text">
                                         <h4>{{ auth()->user()->username }}</h4>
                                         <a href="{{route('ProfileSuperAdmin')}}" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
@@ -46,7 +57,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{route('SettingSuperAdmin')}}"><i class="fa fa-cog"></i>&nbsp;&nbsp;<span>Account Setting</span></a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;<span>Logout</span></a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt logout"></i>&nbsp;&nbsp;<span>Logout</span></a>
                             </li>
                         </div>
                     </ul>
@@ -55,7 +66,12 @@
                         <div class="dropdown-user-scroll scrollbar-outer">
                             <li>
                                 <div class="user-box">
-                                    <div class="avatar-lg"><img src="../assets/profile/default.png" alt="image profile" class="avatar-img rounded"></div>
+                                    @if ( auth()->user()->profile == NULL)
+                                    <div class="avatar-lg"><img src="{{ asset('../assets/profile/default.png') }}"  alt="image profile" class="avatar-img rounded"></div>
+                                    @else
+                                    <div class="avatar-lg"><img src="{{ asset('profile/user/'. auth()->user()->profile) }}" alt="image profile" class="avatar-img rounded"></div>
+                                    @endif
+                                    {{-- <div class="avatar-lg"><img src="{{ asset('profile/user/'. auth()->user()->profile) }}" alt="image profile" class="avatar-img rounded"></div> --}}
                                     <div class="u-text">
                                         <h4>{{ auth()->user()->username }}</h4>
                                         <a href="{{route('ProfileAdmin')}}" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
@@ -69,7 +85,12 @@
                         <div class="dropdown-user-scroll scrollbar-outer">
                             <li>
                                 <div class="user-box">
-                                    <div class="avatar-lg"><img src="../assets/profile/default.png" alt="image profile" class="avatar-img rounded"></div>
+                                    @if ( auth()->user()->profile == NULL)
+                                    <div class="avatar-lg"><img src="{{ asset('../assets/profile/default.png') }}"  alt="image profile" class="avatar-img rounded"></div>
+                                    @else
+                                    <div class="avatar-lg"><img src="{{ asset('profile/user/'. auth()->user()->profile) }}" alt="image profile" class="avatar-img rounded"></div>
+                                    @endif
+                                    {{-- <div class="avatar-lg"><img src="{{ asset('profile/user/'. auth()->user()->profile) }}" alt="image profile" class="avatar-img rounded"></div> --}}
                                     <div class="u-text">
                                         <h4>{{ auth()->user()->username }}</h4>
                                         <a href="{{route('ProfilePegawai')}}" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
