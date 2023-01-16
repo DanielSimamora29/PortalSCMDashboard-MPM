@@ -4,6 +4,15 @@
 
 @section('page_name', 'Daftar User Pegawai')
 
+@if (session()->has('success'))
+                <script>
+                    Swal.fire(
+                        'success',
+                        '{{ session('success') }}'
+                    )
+                    </script>
+            @endif
+
 <div class="col-2 flex">
     <a href="{{ route('TambahUserPegawai') }}" title="Tambah User Admin"  class="btn btn-success p-2 ms-auto">
         <i class="fa fa-plus"></i>
@@ -59,4 +68,7 @@
         </tbody>
     </table>
 </div>
+
+@include('sweetalert::alert')
+
 @endsection

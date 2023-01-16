@@ -6,6 +6,15 @@
 
 @section('page_name', 'Profile SuperAdmin')
 
+@if (session()->has('success'))
+                <script>
+                    Swal.fire(
+                        'success',
+                        '{{ session('success') }}'
+                    )
+                    </script>
+            @endif
+
 <div class="row">
     <div class="col-xl-4">
         <!-- Profile picture card-->
@@ -44,7 +53,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="name"><b>Profile</b></label>
-                        <input type="file" name="profile" class="form-control" id="profile">
+                        <input type="file" name="profile"  class="form-control" id="profile">
                     </div>
                     <!-- Save changes button-->
                     <br>
@@ -58,6 +67,7 @@
     </div>
 </div>
 
+@include('sweetalert::alert')
 
 <script>
     function edituser() {

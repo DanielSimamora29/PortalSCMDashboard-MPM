@@ -6,6 +6,15 @@
 
 @section('page_name', 'Profile Pegawai')
 
+@if (session()->has('success'))
+                <script>
+                    Swal.fire(
+                        'success',
+                        '{{ session('success') }}'
+                    )
+                    </script>
+            @endif
+
 <div class="row">
     <div class="col-xl-4">
         <!-- Profile picture card-->
@@ -57,6 +66,8 @@
         </div>
     </div>
 </div>
+
+@include('sweetalert::alert')
 
 <script>
     function edituser() {

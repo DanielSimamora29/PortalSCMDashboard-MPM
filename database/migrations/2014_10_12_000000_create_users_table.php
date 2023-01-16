@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('role_id')->constrained();
             $table->foreignId('plants_id')->constrained();
             $table->text('dashboard_link')->nullable();
-            $table->string("profile")->default("../assets/profile/default.png");
+            $table->string("profile")->nullable();
             $table->timestamps();
         });
     }

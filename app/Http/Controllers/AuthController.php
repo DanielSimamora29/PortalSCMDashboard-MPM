@@ -132,6 +132,7 @@ class AuthController extends Controller
         }else {
             $filename = '';
         }
+        
 
             $updated = DB::table('users')->where('id', Auth::user()->id)->update([
                 'username' => $request->username,
@@ -157,6 +158,12 @@ class AuthController extends Controller
             if($updated) {
                 Auth::logout();
                 return redirect()->route('index');
+            }
+
+            return back()->with('fail', 'failed to update profile');
+            
+            if($updated) {
+                return back()->with('success', 'Profile updated succesfully');
             }
 
         }

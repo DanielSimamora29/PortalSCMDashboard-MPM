@@ -23,12 +23,12 @@
             <div class="form-group col-12 col-md-6 mt-3">
                 <label for="name">Nama Lengkap</label>
                 <input type="text" class="form-control" name="name" placeholder="Masukkan Nama Lengkap" value="">
-                <span class="invalid-feedback font-weight-bold"></span>
+                @error('name')<span class="invalid-feedback font-weight-bold">{{ $message }}</span>@enderror
             </div>
             <div class="form-group col-12 col-md-6 mt-3">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" name="username" placeholder="Masukkan Username" value="">
-                <span class="invalid-feedback font-weight-bold"></span>
+                @error('username')<span class="invalid-feedback font-weight-bold">{{ $message }}</span>@enderror
             </div>
             <div class="form-group mt-3 col-6">
                 <label for="role_id">Role</label>
@@ -52,7 +52,7 @@
                 <label for="dashboard_link">Link Dashboard</label>
                 <textarea name="dashboard_link" class="form-control" placeholder="Masukkan Link Dashboard" value="" id="" cols="30" rows="10"></textarea>
                 {{-- <input type="url" class="form-control" name="dashboard_link" placeholder="Masukkan Link Dashboard" value=""> --}}
-                <span class="invalid-feedback font-weight-bold"></span>
+                @error('dashboard_link')<span class="invalid-feedback font-weight-bold">{{ $message }}</span>@enderror
             </div>    
             <div class="col-12 col-md-6 mt-5">
                 <button type="submit" class="btn btn-success">Simpan</button>
