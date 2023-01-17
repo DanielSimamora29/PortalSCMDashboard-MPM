@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2,3']], function () {
 
 Route::group(['middleware' => ['auth', 'ceklevel:1']], function() {
     Route::get('/ProfileSuperAdmin', [AuthController::class, 'profileSuperAdmin'])->name('ProfileSuperAdmin');
-    Route::post('/EditProfileSuperAdmin', [AuthController::class, 'editprofile'])->name('EditProfileSuperAdmin');
+    Route::post('/EditProfileSuperAdmin', [AuthController::class, 'editprofileSuperAdmin'])->name('EditProfileSuperAdmin');
     Route::get('/SettingSuperAdmin', [AuthController::class, 'settingSuperAdmin'])->name('SettingSuperAdmin');
     Route::post('/SettingSuperAdmin', [AuthController::class, 'editpassword'])->name('EditSettingSuperAdmin');
     Route::get('/DaftarUserAdmin', [SuperAdminController::class, 'DaftarUserAdmin'])->name('DaftarUserAdmin');
@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function() {
 
 Route::group(['middleware' => ['auth', 'ceklevel:2']], function() {
     Route::get('/ProfileAdmin', [AuthController::class, 'profileAdmin'])->name('ProfileAdmin');
-    Route::post('/EditProfileAdmin', [AuthController::class, 'editprofile'])->name('EditProfileAdmin');
+    Route::post('/EditProfileAdmin', [AuthController::class, 'editprofileuser'])->name('EditProfileAdmin');
     Route::get('/SettingAdmin', [AuthController::class, 'settingAdmin'])->name('SettingAdmin');
     Route::post('/SettingAdmin', [AuthController::class, 'editpassword'])->name('EditSettingAdmin');
 
@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function() {
 
 Route::group(['middleware' => ['auth', 'ceklevel:3']], function() {
     Route::get('/ProfilePegawai', [AuthController::class, 'profilePegawai'])->name('ProfilePegawai');
-    Route::post('/EditProfilePegawai', [AuthController::class, 'editprofile'])->name('EditProfilePegawai');
+    Route::post('/EditProfilePegawai', [AuthController::class, 'editprofileuser'])->name('EditProfilePegawai');
     Route::get('/SettingPegawai', [AuthController::class, 'settingPegawai'])->name('SettingPegawai');
     Route::post('/SettingPegawai', [AuthController::class, 'editpassword'])->name('EditSettingPegawai');
 

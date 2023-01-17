@@ -52,6 +52,10 @@
                         <input class="form-control" name="name" id="name" type="text" placeholder="" value="{{ auth()->user()->name }}" required disabled>
                     </div>
                     <div class="mb-3">
+                        <label for="name"><b>Dashboard_Link</b></label>
+                        <textarea name="dashboard_link" class="form-control" id="dashboard_link" cols="30" rows="10" required disabled>{{ auth()->user()->dashboard_link }}"</textarea>
+                    </div>
+                    <div class="mb-3">
                         <label for="name"><b>Profile</b></label>
                         <input type="file" name="profile"  class="form-control" id="profile">
                     </div>
@@ -73,22 +77,24 @@
     function edituser() {
         var elements = document.getElementById("username"),
             elements0 = document.getElementById("name"),
-            elements1 = document.getElementById("profile"),
+            elements1 = document.getElementById("dashboard_link"),
+            elements2 = document.getElementById("profile"),
             tblSave = document.getElementById("tblSave");
         if(elements.disabled == true && 
             elements0.disabled == true && 
-            // elements1.disabled == true &&
+            elements1.disabled == true &&
            tblSave.disabled == true) { 
             
             elements.disabled = false;
             elements0.disabled = false;
-            // elements1.disabled = false;
+            elements1.disabled = false;
             tblSave.disabled = false;
         }
         else {
             elements.disabled = true;
             elements0.disabled = true;
             elements1.disabled = true;
+            elements2.disabled = true;
             tblSave.disabled = true;
         }
     }

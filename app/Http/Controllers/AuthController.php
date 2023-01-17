@@ -123,7 +123,7 @@ class AuthController extends Controller
 
 
     #Edit profile
-    public function editprofile(Request $request){
+    public function editprofileSuperAdmin(Request $request){
 
         if($request->hasFile('profile')) {
             $file = $request->file('profile');
@@ -134,6 +134,26 @@ class AuthController extends Controller
         }
         
 
+            $updated = DB::table('users')->where('id', Auth::user()->id)->update([
+                'username' => $request->username,
+                'name' => $request->name,
+                'dashboard_link' => $request->dashboard_link,
+                'profile' => $filename
+            ]);
+
+        return back()->with('success', 'Profil Sudah Berhasil Diubah');
+    }
+
+    public function editprofileuser(Request $request){
+
+        if($request->hasFile('profile')) {
+            $file = $request->file('profile');
+            $filename = time()."_".$file->getClientOriginalName();
+            $file->move('profile/user', $filename);
+        }else {
+            $filename = '';
+        }
+        
             $updated = DB::table('users')->where('id', Auth::user()->id)->update([
                 'username' => $request->username,
                 'name' => $request->name,
